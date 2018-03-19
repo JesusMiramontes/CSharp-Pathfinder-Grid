@@ -14,6 +14,10 @@ namespace PathFinder
         public int fila { get; set; }
         public int columna { get; set; }
 
+        // Coordenadas
+        public int x1,x2;
+        public int y1,y2;
+
         // ¿La forma está en uso?
         public bool occupided { get; set; }
 
@@ -24,6 +28,7 @@ namespace PathFinder
         {
             occupided = false;
             r = new Rectangle();
+            fila = columna = x1 = x2 = y1 = y2 = -1;
         }
 
         public Space(int fila, int columna, int x, int y)
@@ -32,6 +37,10 @@ namespace PathFinder
             this.fila = fila;
             this.columna = columna;
             r = new Rectangle(x, y, Matrix.DEFAULT_SPACE_SIZE, Matrix.DEFAULT_SPACE_SIZE);
+            x1 = x;
+            x2 = x + Matrix.DEFAULT_SPACE_SIZE;
+            y1 = y;
+            y2 = y + Matrix.DEFAULT_SPACE_SIZE;
         }
 
         /// <summary>
@@ -40,7 +49,7 @@ namespace PathFinder
         /// </summary>
         public void ToggleUsed()
         {
-            if (occupided)
+            if (!occupided)
             { Form1.drawer.dibujar(this); }
             else
             { Form1.drawer.desdibujar(this); }

@@ -16,8 +16,10 @@ namespace PathFinder
 
         // Valores por defecto de la pluma.
         // Modificar aquí para alterar el tamaño de los cuadros y el espaciado.
-        public const int DEFAULT_SPACE_SIZE = 50;
-        public const int DEFAULT_SPACE_SPACING = 10;
+        public const int DEFAULT_SPACE_SIZE = 80;
+        public const int DEFAULT_SPACE_SPACING = 1;
+        public const int INITIAL_TOP_MARGIN = 10;
+        public const int INITIAL_LEFT_MARGIN = 10;
 
         public Form form;
 
@@ -58,8 +60,8 @@ namespace PathFinder
         /// <param name="f">Forma sobre la que se trabaja</param>
         public void CreateMatrix()
         {
-            int x = 10;
-            int y = 10;
+            int x = INITIAL_LEFT_MARGIN;
+            int y = INITIAL_TOP_MARGIN;
             int fila = 0;
             int columna = 0;
 
@@ -162,5 +164,17 @@ namespace PathFinder
                 }
             }
         }
+
+        public Space whereAmI(int x, int y)
+        {
+            y -= Matrix.INITIAL_TOP_MARGIN;
+            int fil = y / (Matrix.DEFAULT_SPACE_SIZE + Matrix.DEFAULT_SPACE_SPACING);
+            x -= Matrix.INITIAL_LEFT_MARGIN;
+            int col = x / (Matrix.DEFAULT_SPACE_SIZE + Matrix.DEFAULT_SPACE_SPACING);
+            if (this[fil, col] == null)
+                return new Space();
+            return this[fil, col];
+        }
+
     }
 }
