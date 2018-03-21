@@ -16,8 +16,8 @@ namespace PathFinder
 
         // Valores por defecto de la pluma.
         // Modificar aquí para alterar el tamaño de los cuadros y el espaciado.
-        public const int DEFAULT_SPACE_SIZE = 1;
-        public const int DEFAULT_SPACE_SPACING = 0;
+        public const int DEFAULT_SPACE_SIZE = 50;
+        public const int DEFAULT_SPACE_SPACING = 1;
         public const int INITIAL_TOP_MARGIN = 10;
         public const int INITIAL_LEFT_MARGIN = 10;
 
@@ -150,19 +150,19 @@ namespace PathFinder
 
         public void updateDrawingState()
         {
-            //for (int col = 0; col < Form1.matriz.filas; col++)
-            //{
-            //    for (int fil = 0; fil < Form1.matriz.columnas; fil++)
-            //    {
-            //        Random rnd = new Random((int)DateTime.Now.Ticks);
-            //        if (rnd.Next(0, 2) == 0)
-            //        {
-            //            Form1.matriz[col, fil].ToggleUsed();
-            //        }
+            for (int col = 0; col < Form1.matriz.filas; col++)
+            {
+                for (int fil = 0; fil < Form1.matriz.columnas; fil++)
+                {
+                    //Random rnd = new Random((int)DateTime.Now.Ticks);
+                    //if (rnd.Next(0, 2) == 0)
+                    //{
+                    //    Form1.matriz[col, fil].ToggleUsed();
+                    //}
 
-            //        Form1.matriz[col, fil].drawMe();
-            //    }
-            //}
+                    Form1.matriz[col, fil].drawMe();
+                }
+            }
         }
 
         public Space whereAmI(int x, int y)

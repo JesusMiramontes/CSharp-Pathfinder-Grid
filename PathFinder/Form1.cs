@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PathFinder
@@ -46,7 +39,15 @@ namespace PathFinder
             if ((e.Button & MouseButtons.Left) != 0 && (col != last_toggled_col || fil != last_toggled_fil) )// && (col != last_toggled_col) && (fil != last_toggled_fil))// DateTime.Now.Subtract(init_time).Milliseconds >= 300) // DateTime.Now.Subtract(init_time).Milliseconds >= 200) //&& last_toggled_col != col && last_toggled_fil != fil)
             {
                 init_time = DateTime.Now;
-                matriz[fil, col].ToggleUsed();
+                try
+                {
+                    matriz[fil, col].ToggleUsed();
+                }
+                catch (Exception)
+                {
+
+                    //throw;
+                }
                 last_toggled_col = col;
                 last_toggled_fil = fil;
             }
@@ -62,17 +63,38 @@ namespace PathFinder
             
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            matriz.updateDrawingState();
+        }
+
+        private void keep_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = !timer1.Enabled;
+        }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_ResizeBegin(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Form1_LocationChanged(object sender, EventArgs e)
+        {
+            if (matriz != null)
+                matriz.updateDrawingState();
+        }
+
         private void Form1_Click_1(object sender, EventArgs e)
         {
             if (tracking)
             {
                 matriz[fil, col].ToggleUsed();
             }
-        }
-
-        private void Form1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
