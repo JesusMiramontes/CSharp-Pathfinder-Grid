@@ -17,7 +17,7 @@ namespace PathFinder
         public bool tracking = false;
         public int fil, col = -1;
         public DateTime init_time = DateTime.MinValue;
-        //public int last_toggled_col = -1, last_toggled_fil = -1;
+        public int last_toggled_col = -1, last_toggled_fil = -1;
 
         public Form1()
         {
@@ -43,12 +43,12 @@ namespace PathFinder
                 button2.Text = s.columna.ToString() + ", " + s.fila.ToString();
             }
 
-            if ((e.Button & MouseButtons.Left) != 0 && DateTime.Now.Subtract(init_time).Milliseconds >= 200) //&& last_toggled_col != col && last_toggled_fil != fil)
+            if ((e.Button & MouseButtons.Left) != 0 && (col != last_toggled_col || fil != last_toggled_fil) )// && (col != last_toggled_col) && (fil != last_toggled_fil))// DateTime.Now.Subtract(init_time).Milliseconds >= 300) // DateTime.Now.Subtract(init_time).Milliseconds >= 200) //&& last_toggled_col != col && last_toggled_fil != fil)
             {
                 init_time = DateTime.Now;
                 matriz[fil, col].ToggleUsed();
-                //last_toggled_col = col;
-                //last_toggled_fil = fil;
+                last_toggled_col = col;
+                last_toggled_fil = fil;
             }
         }
 
