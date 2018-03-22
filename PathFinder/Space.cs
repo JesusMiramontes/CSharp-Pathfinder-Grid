@@ -24,6 +24,8 @@ namespace PathFinder
         // Rectangulo que se usa para dibujarse
         public Rectangle r { get; set; }
 
+        public int value = -1;
+
         public Space()
         {
             occupided = false;
@@ -64,7 +66,7 @@ namespace PathFinder
             if (occupided)
             {
                 Form1.drawer.dibujar(this);
-                Form1.drawer.drawText("1", this);
+                Form1.drawer.drawText(value.ToString(), this);
             }
             else
             { Form1.drawer.desdibujar(this); }
