@@ -19,6 +19,9 @@ namespace PathFinder
         // Pluma color default para objetos en pantalla
         //public static Pen Color = new Pen(System.Drawing.Color.Red,DefaultSize);
         Brush color = new SolidBrush(System.Drawing.Color.Red);
+        Brush text_color = new SolidBrush(System.Drawing.Color.Yellow);
+
+        private Font font = new Font(new FontFamily("Times New Roman"), 20, FontStyle.Regular, GraphicsUnit.Pixel);
 
 
         // Pluma usada para borrar el objeto dibujado, debe ser del mismo color del fondo de la forma
@@ -74,6 +77,12 @@ namespace PathFinder
         public void desdibujar(Space s)
         {
             desdibujar(s.r);
+        }
+
+        public void drawText(string t, Space s)
+        {
+            int center = 0;// Matrix.DEFAULT_SPACE_SIZE / 4;
+            g.DrawString(t, font, text_color, s.x1 + center,s.y1 + center);
         }
 
     }

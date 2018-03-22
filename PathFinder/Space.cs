@@ -49,17 +49,23 @@ namespace PathFinder
         /// </summary>
         public void ToggleUsed()
         {
-            if (!occupided)
-            { Form1.drawer.dibujar(this); }
-            else
-            { Form1.drawer.desdibujar(this); }
+            //if (!occupided)
+            //{
+            //    Form1.drawer.dibujar(this);
+            //}
+            //else
+            //{ Form1.drawer.desdibujar(this); }
             occupided = !occupided;
+            drawMe();
         }
 
         public void drawMe()
         {
             if (occupided)
-            { Form1.drawer.dibujar(this); }
+            {
+                Form1.drawer.dibujar(this);
+                Form1.drawer.drawText("1", this);
+            }
             else
             { Form1.drawer.desdibujar(this); }
         }

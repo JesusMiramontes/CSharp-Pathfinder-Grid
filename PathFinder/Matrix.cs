@@ -16,7 +16,7 @@ namespace PathFinder
 
         // Valores por defecto de la pluma.
         // Modificar aquí para alterar el tamaño de los cuadros y el espaciado.
-        public const int DEFAULT_SPACE_SIZE = 50;
+        public const int DEFAULT_SPACE_SIZE = 30;
         public const int DEFAULT_SPACE_SPACING = 1;
         public const int INITIAL_TOP_MARGIN = 10;
         public const int INITIAL_LEFT_MARGIN = 10;
